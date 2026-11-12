@@ -1,0 +1,111 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: "JetBrains Mono", ui-monospace, monospace;
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui;
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-critical: var(--critical);
+  --color-high: var(--high);
+  --color-medium: var(--medium);
+  --color-low: var(--low);
+  --color-info: var(--info);
+  --color-success: var(--success);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+}
+
+:root {
+  --radius: 0.5rem;
+  /* SOC dark cyber theme */
+  --background: oklch(0.16 0.02 250);
+  --foreground: oklch(0.95 0.01 200);
+  --card: oklch(0.2 0.025 250);
+  --card-foreground: oklch(0.95 0.01 200);
+  --popover: oklch(0.2 0.025 250);
+  --popover-foreground: oklch(0.95 0.01 200);
+  --primary: oklch(0.78 0.18 180);
+  --primary-foreground: oklch(0.15 0.03 220);
+  --secondary: oklch(0.26 0.03 250);
+  --secondary-foreground: oklch(0.95 0.01 200);
+  --muted: oklch(0.24 0.025 250);
+  --muted-foreground: oklch(0.65 0.03 220);
+  --accent: oklch(0.3 0.05 200);
+  --accent-foreground: oklch(0.95 0.01 200);
+  --destructive: oklch(0.65 0.25 25);
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: oklch(0.3 0.03 240 / 60%);
+  --input: oklch(0.28 0.03 240);
+  --ring: oklch(0.78 0.18 180);
+
+  --critical: oklch(0.65 0.27 18);
+  --high: oklch(0.72 0.21 45);
+  --medium: oklch(0.82 0.17 90);
+  --low: oklch(0.75 0.15 200);
+  --info: oklch(0.7 0.16 240);
+  --success: oklch(0.75 0.18 155);
+
+  --chart-1: oklch(0.78 0.18 180);
+  --chart-2: oklch(0.7 0.2 320);
+  --chart-3: oklch(0.72 0.21 45);
+  --chart-4: oklch(0.75 0.18 155);
+  --chart-5: oklch(0.65 0.27 18);
+
+  --gradient-glow: radial-gradient(circle at 50% 0%, oklch(0.78 0.18 180 / 25%), transparent 60%);
+  --shadow-glow: 0 0 40px oklch(0.78 0.18 180 / 25%);
+  --shadow-critical: 0 0 30px oklch(0.65 0.27 18 / 35%);
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  html, body { background-color: var(--color-background); color: var(--color-foreground); font-family: var(--font-sans); }
+  body {
+    background-image:
+      linear-gradient(oklch(0.78 0.18 180 / 4%) 1px, transparent 1px),
+      linear-gradient(90deg, oklch(0.78 0.18 180 / 4%) 1px, transparent 1px);
+    background-size: 40px 40px;
+    background-attachment: fixed;
+  }
+  h1,h2,h3,h4 { font-family: var(--font-display); letter-spacing: -0.02em; }
+}
+
+@layer utilities {
+  .glow-primary { box-shadow: var(--shadow-glow); }
+  .glow-critical { box-shadow: var(--shadow-critical); }
+  .text-glow { text-shadow: 0 0 12px currentColor; }
+  .grid-bg { background-image: linear-gradient(oklch(0.78 0.18 180 / 6%) 1px, transparent 1px), linear-gradient(90deg, oklch(0.78 0.18 180 / 6%) 1px, transparent 1px); background-size: 24px 24px; }
+  .scanline {
+    background: repeating-linear-gradient(0deg, transparent, transparent 2px, oklch(1 0 0 / 2%) 2px, oklch(1 0 0 / 2%) 3px);
+  }
+  @keyframes pulse-dot { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(0.8)} }
+  .pulse-dot { animation: pulse-dot 1.4s ease-in-out infinite; }
+  @keyframes ticker { 0%{transform:translateY(0)} 100%{transform:translateY(-50%)} }
+}

@@ -1,0 +1,19 @@
+# Backend API
+fastapi>=0.136.1
+uvicorn>=0.46.0
+
+# LLM agents
+groq>=1.2.0
+python-dotenv>=1.2.2
+
+# RAG / vector store
+chromadb>=1.5.9
+
+# Wazuh indexer queries + threat-intel lookups
+requests>=2.33.1
+urllib3>=2.6.3
+
+# Dashboard
+streamlit>=1.57.0
+pandas>=2.3.3
+plotly>=6.7.0
